@@ -1,41 +1,40 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import EditSaleItem from './EditSaleItem'
 
 class Header extends Component {
+  constructor () {
+    super()
 
-    constructor() {
-        super();
-        this.state = {
-            itemCurrentlyOnSale: 'A Hammer',
-            editSaleItem: false
-        };
+    this.state = {
+      itemCurrentlyOnSale: 'A Hammer!',
+      editSaleItem: false
     }
-    // use = when writing custom methods
-    toggleEditSaleItem = () => {
-        console.log("Hit toggle Edit Sale Item")
-        this.setState({editSaleItem: !this.state.editSaleItem})
-    };
+  }
 
-    handleItemCurrentlyOnSaleChange = (event) => {
-        console.log('event.target.value')
-        this.setState({
-            itemCurrentlyOnSale: event.target.value
-        })
-    }
+  toggleEditSaleItem = () => {
+    this.setState({editSaleItem: !this.state.editSaleItem})
+  }
 
-    render() {
-        return (
-            <div>
-                <h1>My Hardware Store</h1>
-                <p>Currently on Sale: {this.state.itemCurrentlyOnSale}!</p>
-                <button onClick= {this.toggleEditSaleItem}>
-                    { this.state.editSaleItem ? 'Hide' : "Edit Sale Item"}
-                </button>
-                <div>
-                    {this.state.editSaleItem ? <input type="text" placeholder={this.state.itemCurrentlyOnSale} onChange={this.handleItemCurrentlyOnSaleChange}/> : null}
-                </div>
-            </div>
-        );
-    }
+  handleItemCurrentlyOnSaleChange = (event) => {
+    this.setState({
+      itemCurrentlyOnSale: event.target.value
+    })
+  }
+
+  render () {
+    return (
+      <div>
+        <h1>Hardware Store</h1>
+        <p>Currently On Sale: {this.state.itemCurrentlyOnSale}</p>
+        <EditSaleItem
+          toggleEditSaleItem={this.toggleEditSaleItem}
+          handleItemCurrentlyOnSaleChange={this.handleItemCurrentlyOnSaleChange}
+          editSaleItem={this.state.editSaleItem}
+          itemCurrentlyOnSale={this.state.itemCurrentlyOnSale}
+        />
+      </div>
+    )
+  }
 }
 
-export default Header;
+export default Header
