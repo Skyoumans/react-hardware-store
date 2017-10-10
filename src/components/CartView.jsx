@@ -8,12 +8,13 @@ class CartView extends Component {
                 <h1>Cart</h1>
                 <div>
                 { this.props.cartList.map((product, index) => {
+                    console.log(product)
                     return (
                         <div key={index}>
                         <Product
-                            productName={this.productName}
-                            pride={this.price}
-                            description={this.description}
+                            productName={product.productName}
+                            price={product.price}
+                            description={product.description}
                         />
                         <button onClick={() => this.props.deleteProductFromCartList(index)}>Delete Item</button>
                         </div>

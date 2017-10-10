@@ -40,7 +40,7 @@ class Shop extends Component {
 
   addProductToCartList = (index) => {
     const newCartList = [...this.state.cartList]
-    newCartList.push(this.state.cartList[index])
+    newCartList.push(this.state.productList[index])
     this.setState({cartList: newCartList})
   }
 
